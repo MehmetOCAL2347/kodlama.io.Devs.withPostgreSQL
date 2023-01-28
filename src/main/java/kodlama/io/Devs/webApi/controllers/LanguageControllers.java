@@ -1,7 +1,8 @@
 package kodlama.io.Devs.webApi.controllers;
 
 import kodlama.io.Devs.business.abstracts.LanguageService;
-import kodlama.io.Devs.entities.concretes.Language;
+import kodlama.io.Devs.business.requests.CreateLanguageRequest;
+import kodlama.io.Devs.business.responses.GetAllLanguagesResponse;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.*;
 
@@ -18,6 +19,18 @@ public class LanguageControllers {
         this.languageService = languageService;
     }
 
+    @GetMapping("/getAllLanguages")
+    public List<GetAllLanguagesResponse> getAllLanguage(){
+        return languageService.getAllLanguages();
+    }
+
+    @PostMapping("/insertNewLanguage")
+    public void insertNewLanguage(@RequestBody CreateLanguageRequest createLanguageRequest){
+        languageService.insertNewLanguage(createLanguageRequest);
+    }
+
+
+    /*
     @PostMapping(
             value = "/insertNewLanguage",
             consumes = "application/json",
@@ -27,10 +40,7 @@ public class LanguageControllers {
         languageService.insertNewLanguage(language);
     }
 
-    @GetMapping("/getAllLanguages")
-    public List<Language> getAllLanguage(){
-        return languageService.getAllLanguages();
-    }
+
 
     @GetMapping("/getById/{id}")
     public Language getLanguageWithId(@PathVariable("id") int id){
@@ -40,5 +50,5 @@ public class LanguageControllers {
     @DeleteMapping("/deleteLanguage/{id}")
     public void deleteLanguage(@PathVariable("id") int id){
         languageService.deleteLanguage(id);
-    }
+    }*/
 }

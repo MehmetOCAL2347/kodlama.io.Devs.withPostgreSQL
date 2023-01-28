@@ -1,13 +1,6 @@
 package kodlama.io.Devs.dataAccess.abstracts;
 
 import kodlama.io.Devs.entities.concretes.Language;
+import org.springframework.data.jpa.repository.JpaRepository;
 
-import java.util.List;
-
-public interface LanguageRepository {
-    void insertNewLanguage(Language language);
-    void deleteLanguage(int id);
-    void updateLanguage(Language existLanguage, Language newLanguage);
-    List<Language> getAllLanguages();
-    Language getLanguageById(int id);
-}
+public interface LanguageRepository extends JpaRepository<Language, Integer> {}
